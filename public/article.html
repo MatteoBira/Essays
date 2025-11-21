@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+<title>39mylife</title>
+<link rel="icon" type="image/x-icon" href="icon.jpeg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <article class="single-post" id="article"></article>
+</main>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const file = params.get('file');
+
+if(file){
+  fetch('/api/post/' + file)
+    .then(res => res.json())
+    .then(post => {
+      const bodyHTML = post.body.split('\n').map(p => `<p>${p}</p>`).join('');
+      document.getElementById('article').innerHTML = `
+        <h2>${post.title}</h2>
+        <p class="date">${post.date}</p>
+        <div class="content">${bodyHTML}</div>
+        <div class="back-link"><a href="index.html">&larr; Back to all posts</a></div>
+      `;
+    });
+} else {
+  document.getElementById('article').innerHTML = '<p>Article not found.</p>';
+}
+</script>
+</body>
+</html>
+

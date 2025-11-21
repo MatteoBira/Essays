@@ -1,0 +1,232 @@
+:root {
+  --text: #e7e8ec;
+  --background: #121316;
+  --primary: #adb0bc;
+  --secondary: #584e60;
+  --accent: #9c879e;
+}
+
+.oi-regular {
+  font-family: "Oi", serif;
+  font-weight: 1;
+  font-style: normal;
+}
+
+/* Base reset and body */
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--background);
+  color: var(--text);
+}
+
+::selection {
+  color: var(--background);       /* Text color when highlighted */
+  background: var(--text); /* Background highlight color */
+}
+
+/* Header */
+header {
+  text-align: left;
+  padding: 3% 20%;
+  background: var(--background);
+}
+
+header h1 {
+  font-family: "Cormorant", serif;
+  font-weight: 700;
+  font-style: italic;
+  font-size: 6rem;
+  margin: 0;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* Mobile header adjustments */
+@media (max-width: 790px) {
+  header {
+    padding: 10% 5%;
+  }
+  
+  header h1 {
+    font-size: 3rem;
+    text-align: center;
+  }
+}
+
+/* Main */
+main {
+  display: flex;
+  justify-content: flex-start;
+  padding: 40px 20px;
+}
+
+/* Mobile main adjustments */
+@media (max-width: 790px) {
+  main {
+    padding: 20px 10px;
+  }
+}
+
+/* Articles container */
+.articles {
+  width: 100%;
+  max-width: 80%;
+  margin-left: 80px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Mobile articles container - full width */
+@media (max-width: 790px) {
+  .articles {
+    max-width: 100%;
+    margin-left: 0;
+    width: 100%;
+  }
+}
+
+/* Post styling */
+.post {
+  padding: 25px 35px;
+  border-bottom: 2px solid var(--primary);
+  margin-bottom: 5px;
+  transition: background 0.3s, transform 0.2s, box-shadow 0.3s;
+  cursor: url('h-b.png') 10 5, pointer;
+}
+
+/* Mobile post - full width */
+@media (max-width: 790px) {
+  .post {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px;
+    border-left: none;
+    border-right: none;
+  }
+}
+
+.post:hover {
+  background: rgba(156, 135, 158, 0.2); /* Using accent with some transparency */
+  transform: translateY(-3px);
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+.post:active {
+  cursor: url('click-b.png') 10 5, pointer;
+}
+
+.post a.post-link {
+  text-decoration: none;  /* removes underline */
+  color: inherit;         /* keeps the text color same as parent */
+  display: block;         /* ensures the link fills the entire article */
+  cursor: url('h-b.png') 10 5, pointer;
+}
+
+a:hover {
+  text-decoration: none;  /* ensures no underline on hover */
+  cursor: url('h-b.png') 10 5, pointer;
+}
+
+a:active {
+  cursor: url('click-b.png') 10 5, pointer;
+}
+
+.post h2 {
+  margin: 0 0 5px;
+  font-size: 1.6rem;
+  color: var(--primary);
+}
+
+/* Mobile post title */
+@media (max-width: 790px) {
+  .post h2 {
+    font-size: 1.4rem;
+  }
+}
+
+.post p {
+  margin: 0;
+  color: var(--secondary);
+  font-size: 0.9rem;
+}
+
+/* Single article page */
+.single-post {
+  width: 50%;
+  max-width: 80%;
+  margin: 0 auto;
+  margin-left: 20%;
+  margin-top: 1%;
+  padding: 40px 30px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  background: rgba(156, 135, 158, 0.1); /* subtle accent background */
+}
+
+/* Mobile single post - full width */
+@media (max-width: 790px) {
+  .single-post {
+    width: 100%;
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    padding: 20px 15px;
+    border-left: none;
+    border-right: none;
+    border-radius: 0;
+  }
+}
+
+.single-post h2 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  color: var(--primary);
+}
+
+/* Mobile single post title */
+@media (max-width: 790px) {
+  .single-post h2 {
+    font-size: 1.6rem;
+  }
+}
+
+.single-post .date {
+  color: var(--secondary);
+  font-size: 0.9rem;
+  margin-bottom: 25px;
+}
+
+.single-post .content p {
+  line-height: 1.6;
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--text);
+}
+
+/* Mobile content text */
+@media (max-width: 790px) {
+  .single-post .content p {
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+.single-post .back-link {
+  margin-top: 30px;
+}
+
+.single-post .back-link a {
+  text-decoration: none;
+  color: var(--accent);
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.single-post .back-link a:hover {
+  color: var(--primary);
+}

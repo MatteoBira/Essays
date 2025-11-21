@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oi&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Oi&display=swap" rel="stylesheet">
+<title>37mylife</title>
+<link rel="icon" type="image/x-icon" href="icon.jpeg">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <h1>Essays</h1>
+</header>
+<main>
+  <section class="articles" id="articles"></section>
+</main>
+<script>
+fetch('/api/posts')
+  .then(res => res.json())
+  .then(posts => {
+    const container = document.getElementById('articles');
+    posts.forEach(post => {
+      const articleEl = document.createElement('article');
+      articleEl.className = 'post';
+
+      // Make the entire article a link
+      articleEl.innerHTML = `
+        <a href="article.html?file=${post.file}" class="post-link">
+          <h2>${post.title}</h2>
+          <p>${post.date}</p>
+        </a>
+      `;
+      container.appendChild(articleEl);
+    });
+  });
+</script>
+</body>
+</html>
+
